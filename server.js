@@ -20,9 +20,7 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-  const path = "data.json";
-  // res.send('fs')
-  fs.readFile(path, "utf-8", (er, docs) => {
+  fs.readFile("data.json", "utf-8", (er, docs) => {
     if (er) {
       res
         .send({
@@ -32,7 +30,8 @@ app.get("/data", (req, res) => {
       return;
     }
     const data = JSON.parse(docs);
-    let updateData = data.splice(1, 5);
+    let updateData = [...data];
+    // let updateData = data.splice(1, 5);
     res.send(updateData).status(200);
   });
 });
