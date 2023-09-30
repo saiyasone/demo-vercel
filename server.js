@@ -15,11 +15,11 @@ app.get("/", (req, res) => {
 });
 app.get("/data", (req, res) => {
   const path = "./data.json";
-  if (fs.existsSync(path)) {
-    res.send({ message: "Yes" }).status(200);
-  } else {
-    res.send({ message: "No" }).status(400);
-  }
+  fs.readFile(path, "utf-8", (er, docs) => {
+    if (er) throw er;
+    const data = JSON.parse(docs);
+    res.json(data).status(200);
+  });
 });
 
 const port = 5000;
