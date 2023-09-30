@@ -19,7 +19,7 @@ app.get("/data", (req, res) => {
     fs.readFile(path, "utf-8", (er, docs) => {
       if (er) throw er;
       const data = JSON.parse(docs);
-      res.json(data).status(200);
+      res.send(data).status(200);
     });
   }
 });
