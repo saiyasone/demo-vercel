@@ -20,7 +20,7 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-  const path = "./data.json";
+  const path = "data.json";
   if (fs.existsSync(path)) {
     fs.readFile(path, "utf-8", (er, docs) => {
       if (er) throw er;
