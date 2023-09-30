@@ -1,6 +1,6 @@
 const express = require("express");
 const http = require("http");
-const fs = require('fs');
+const fs = require("fs");
 // const indexRouter = require("./routes/index");
 
 const app = express();
@@ -27,6 +27,10 @@ app.get("/data", (req, res) => {
       const data = JSON.parse(docs);
       let updateData = data.splice(1, 5);
       res.send(updateData).status(200);
+    });
+  } else {
+    res.send({
+      message: "No Data",
     });
   }
 });
