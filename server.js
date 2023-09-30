@@ -21,23 +21,19 @@ app.get("/about", (req, res) => {
 
 app.get("/data", (req, res) => {
   const path = "data.json";
-  const data = [
-    { name: "Thailand", topLevelDomain: ".th" },
-    { name: "Laos", topLevelDomain: ".la" },
-  ];
-  res.send(data)
-  // if (fs.existsSync(path)) {
-  //   fs.readFile(path, "utf-8", (er, docs) => {
-  //     if (er) throw er;
-  //     const data = JSON.parse(docs);
-  //     let updateData = data.splice(1, 5);
-  //     res.send(updateData).status(200);
-  //   });
-  // } else {
-  //   res.send({
-  //     message: "No Data",
-  //   });
-  // }
+
+  if (fs.existsSync(path)) {
+    fs.readFile(path, "utf-8", (er, docs) => {
+      if (er) throw er;
+      const data = JSON.parse(docs);
+      let updateData = data.splice(1, 5);
+      res.send(updateData).status(200);
+    });
+  } else {
+    res.send({
+      message: "No Data",
+    });
+  }
 });
 
 // app.use("/api/v1", indexRouter);
