@@ -19,7 +19,8 @@ app.get("/data", (req, res) => {
     fs.readFile(path, "utf-8", (er, docs) => {
       if (er) throw er;
       const data = JSON.parse(docs);
-      res.send(data).status(200);
+      let updateData = data.splice(1, 10);
+      res.send(updateData).status(200);
     });
   }
 });
