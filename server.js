@@ -11,7 +11,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send({ message: "Home" }).status(200);
+  res.send({ message: "Home Page" }).status(200);
+});
+
+app.get("/about", (req, res) => {
+  res.send({ message: "About Page" }).status(200);
 });
 
 app.use("/api/v1", indexRouter);

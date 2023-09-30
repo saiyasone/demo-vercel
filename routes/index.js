@@ -11,8 +11,6 @@ router.get("/data", (req, res) => {
       let updateData = data.splice(1, 5);
       res.send(updateData).status(200);
     });
-  } else {
-    console.log("No");
   }
 });
 
