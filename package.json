@@ -4,7 +4,7 @@
   "description": "No way come home",
   "main": "server.js",
   "engines": {
-    "node": "v14.x"
+    "node": "v16.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
