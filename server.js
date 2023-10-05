@@ -23,20 +23,6 @@ app.get("/data", (req, res) => {
   const data = dataObjects;
   let updateData = [...data];
   res.send(updateData).status(200);
-  
-  // fs.readFile("data.json", "utf-8", (er, docs) => {
-  //   if (er) {
-  //     res
-  //       .send({
-  //         message: "No File",
-  //       })
-  //       .status(400);
-  //     return;
-  //   }
-  //   const data = JSON.parse(docs);
-  //   let updateData = [...data];
-  //   res.send(updateData).status(200);
-  // });
 });
 
 // app.use("/api/v1", indexRouter);
