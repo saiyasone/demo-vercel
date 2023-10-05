@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
-const fs = require("fs");
 const dataObjects = require("./data-country");
+// const fs = require("fs");
 
 const app = express();
 app.use(express.json());
@@ -15,17 +15,25 @@ app.get("/", (req, res) => {
   res.send({ message: "Home Page" }).status(200);
 });
 
-app.get("/about", (req, res) => {
-  res.send({ message: "About Page" }).status(200);
-});
-
 app.get("/data", (req, res) => {
-  const data = dataObjects;
-  let updateData = [...data];
-  res.send(updateData).status(200);
-});
+  const { offset, limit, search } = req.query;
+  let offsetNumber = offset || 0;
+  let limitNumber = limit;
+  // let searchData = search || "";
 
-// app.use("/api/v1", indexRouter);
+  let totalNumber = 0;
+  const data = dataObjects;
+  totalNumber = data.length;
+  limitNumber = totalNumber;
+  let updateData = data.splice(offsetNumber, limitNumber);
+
+  res
+    .send({
+      data: updateData,
+      totalNumber,
+    })
+    .status(200);
+});
 
 const port = 5000;
 const server = http.createServer(app);
